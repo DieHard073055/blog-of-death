@@ -11,7 +11,7 @@ var add_topics = function(data, res){
     if(data.arguments== 'add_topic'){
         if(data.topic_name){
             if(!data.topic_parent) data.topic_parent = null;   
-            out.status.push('topic name recieved!');
+            console.log('topic name recieved!');
             topic_exists(data.topic_name, function(result){
                 console.log("topic result : " + result)
                 if(!result){
@@ -38,8 +38,7 @@ var add_topics = function(data, res){
 // use the connect_db module to insert the topic into db
 // =====================================================
 
-var insert_topic = function(topic, success_call){
-    var return_val = false;
+var insert_topic = function(topic, done){
      connect_db(function(err, db, callback){
         console.log('Inserting new topic into topic collection');
         db.collection('topics').insertOne(
@@ -48,7 +47,7 @@ var insert_topic = function(topic, success_call){
                 if(err) throw err;
                 console.log(JSON.stringify(result.result));
                 callback();
-                success_call(result.result.n);
+                done(result.result.n);
             }
         );
     });
@@ -68,10 +67,12 @@ var topic_exists = function(topic_name, done){
                 if(doc!=null){
                     console.log(doc);
                     if(doc.topic_name == topic_name){
-                       if(!called){called=true;done(true);}
+                       if(!called){called=true;callback();done(true);}
                     }else{
-                        if(!called){called=true;done(false);}
+                        if(!called){called=true;callback();done(false);}
                     }
+                }else{
+                    if(!called){called=true;callback();done(false);}
                 }
             }
         );

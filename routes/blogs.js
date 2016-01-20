@@ -20,17 +20,18 @@ var router = express.Router();
  *
  *****************************************************************************************/
 var request_modules = {
-    'all_blogs' : 'all_blogs_module',
-    'blog' : 'blog_module',
-    'add_blog' : 'add_blog_module',
-    'edit_blog' : 'edit_blog_module',
-    'blog_topic' : 'blog_topic_module',
-    'blog_tag' : 'blog_tag_module'
+    'all_blogs' : require('../modules/all_blogs'),
+    'blog' : require('../modules/blog'),
+    'add_blog' : require('../modules/add_blog'),
+    'edit_blog' : require('../modules/edit_blog'),
+    'blog_topic' : require('../modules/blog_topic'),
+    'blog_tag' : require('../modules/blog_tag'),
+    'delete_blog' : require('../modules/delete_blog')
 };
 router.post('/',function(req, res, next){
     module = req.body.module;
     console.log('/blogs | post | Recieved : ' + JSON.stringify(req.body));
-    if(request_modules[module]) res.send(request_modules[module]);
+    if(request_modules[module]) request_modules[module](req.body, res);
     else res.send(JSON.stringify(
         { 'error' : 'Requested module cannot be found' }
         )

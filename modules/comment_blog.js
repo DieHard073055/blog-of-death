@@ -5,12 +5,12 @@ var objectID = require('./db_module').objectID;
 // function to export
 // ==================
 
-var blog = function(data, res){
-    if(data.id){
-        if(data.id.length > 23){
-            var id =  objectID(data.id);
-            fetch_blog_via_id(id, function(blog){
-                res.send(JSON.stringify(blog));
+var comment_blog = function(data, res){
+    if(data.blog_id){
+        if(data.blog_id.length > 23){
+            var id = data.blog_id
+            fetch_comments_via_blog_id(id, function(comments){
+                res.send(JSON.stringify(comments));
             });
         }else{
             //ID too short
@@ -18,7 +18,7 @@ var blog = function(data, res){
         }
     }else{
         //instructions
-        res.send(JSON.stringify(get_instructions));
+        res.send(JSON.stringify(get_instructions()));
     }
 };
 
@@ -27,14 +27,14 @@ var blog = function(data, res){
 // Fetch blog via id
 // ==================
 
-var fetch_blog_via_id = function(id, done){
+var fetch_comments_via_blog_id = function(id, done){
     connect_db(function(err, db, callback){
-        var data = null;
-        var cursor = db.collection('blogs').find({_id:id});
+        var data = [];
+        var cursor = db.collection('comments').find({blog_id:id});
         cursor.each(function(err, doc){
             if(err) throw err;
             if(doc != null){
-                data = doc;
+                data.push(doc);
             }else{
                 callback();
                 done(data);
@@ -50,7 +50,7 @@ var id_too_short = function(){
 var get_instructions = function(){
     return {
         'instructions' :
-        'blog_module : to retrieve a blog from the blogs collection, add the following data to the request body. module : blog, id : "insert blog id"'
+        'comment_blog_module : to retrieve a blog from the blogs collection, add the following data to the request body. module : blog, id : "insert blog id"'
     };
 };
-module.exports = blog;
+module.exports = comment_blog;
