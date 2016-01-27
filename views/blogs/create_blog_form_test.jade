@@ -1,0 +1,36 @@
+//start create form blog
+form(id="create-blog" onsubmit="return false;")
+    div.form-group
+        label(for="Title") Title
+        input(class="form-control" name="blog-title" id="blog-title")
+
+    div.form-group
+        label(for="Body") Pages
+        ul( class="nav nav-pills" id="page-content-nav" data=1)
+        div(class="tab-content" id="page-content")
+            
+        
+    div.form-group
+        label(for="tags") Tags
+        input(class="form-control" name="blog-tags" id="blog-tags")
+    
+    div.form-group
+        label(for="topics") Topic
+        div.form-group
+            label Select Topic
+            select( id="populate_topics" class="form-control")
+        div.form-group
+            label  New Topic
+            input(
+                type="text" 
+                name="toc" 
+                class="form-control" 
+                id="input_new_topic" 
+                placeholder="Key a New Topic and Press Enter"
+            )
+
+        
+        
+    button(class="btn btn-success" id="blog-submit") Submit
+    button(class="btn btn-danger" id="blog-reset") Reset
+    

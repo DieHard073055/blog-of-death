@@ -7,7 +7,6 @@ var objectID = require('./db_module').objectID;
 
 var delete_blog = function(data, res){
     var out = {}; 
-    out['status'] = [];
 
     if(data.arguments == 'delete_blog'){
         if(data.id){
@@ -15,9 +14,11 @@ var delete_blog = function(data, res){
             var blog_id = objectID(data.id);
             remove_blog(blog_id, function(result){
                 if(result){
-                    out.status.push('Successfully deleted the blog');
+                    out.code = 1;
+                    out.message='Successfully deleted the blog';
                 }else{
-                    out.status.push('Sorry, we were not able to delete the blog');
+                    out.code = 0;
+                    out.message='Sorry, we were not able to delete the blog';
                 }
                 res.send(out);
             });
@@ -55,7 +56,8 @@ var remove_blog= function(blog_id, done){
 
 var missing_blog_id = function(){
     return {
-        'error' : 'missing data - id : "blog id"'
+        'code' : 0,
+        'message' : 'missing data - id : "blog id"'
     };
 };
 
@@ -65,7 +67,8 @@ var missing_blog_id = function(){
 
 var get_instructions = function(){
     var instructions = {
-        'instructions' : 
+        'code': 0,
+        'message' : 
         'delete_blog_module : to remove a blog from the blog list collection, add the following data to the request body. argument : delete_blog, blog_id : "blog_id"'
     };
     return instructions;

@@ -29,12 +29,19 @@ var check_topic_exist = function(topic, done){
         cursor.each(function(err, doc){
             if(err) throw err;
             if(doc!= null){
-                callback();
                 console.log(doc);
-                if(doc.topic_name == topic)
-                if(!called){called=true;done(true);}
-                else if(!called){called=true;done(false);}
+                if(doc.topic_name == topic){
+                    if(!called){console.log('topic exists');called=true;callback();done(true);}
+                }else if(!called){console.log('no topic found');called=true;callback();done(false);}
+            }else{
+                if(!called){
+                    called=true;
+                    console.log('nothing found');
+                    callback();
+                    done(false);
+                }
             }
+
         });
     });
 };
@@ -43,7 +50,7 @@ var check_topic_exist = function(topic, done){
 // ====================================
 var fetch_blog_via_topic = function(topic, done){
     connect_db(function(err, db, callback){
-        var data = null;
+        var data = [];
         cursor = db.collection('blogs').find({'topic':topic},{
                 _id:1, 
                 title:1, 
@@ -53,7 +60,7 @@ var fetch_blog_via_topic = function(topic, done){
         });
         cursor.each(function(err, doc){
             if(err) throw err;
-            if(doc != null)data=doc;
+            if(doc != null)data.push(doc);
             else{
                 callback();
                 done(data);

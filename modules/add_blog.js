@@ -6,14 +6,11 @@ var connect_db = require('./db_module').connect_db_write;
 
 var add_blog = function(data, res){
     var out ={};
-    out['status'] = [];
     check_for_all_fields(data, function(fields){
         if(fields > 5){
-            out.status.push('Fileds count : ' + fields);
             var i=0;
             var pages = [];
             console.log('page count : ' + data.page_num);
-            out.status.push('Page count : ' + data.page_num);
             for(i=0;i<data.page_num;i++){
                 pages.push({
                   subtitle: data['page_'+i+'_subtitle'],
@@ -27,7 +24,7 @@ var add_blog = function(data, res){
                         if(result){
                             var blog_entry = {
                                 title : data.title,
-                                author : 'diehard',
+                                author : data.author,
                                 topic : data.topic,
                                 tags : data.tags.split(' '),
                                 'pages' : pages
@@ -35,20 +32,24 @@ var add_blog = function(data, res){
                             };
                             insert_blog_entry(blog_entry, function(result){
                                 if(result){
-                                    out.status.push('Successfully added a new entry to the blogs collection');
+                                    out.code = 1;
+                                    out.message = 'Successfully added the new blog entry';
                                     res.send(JSON.stringify(out));
                                 }else{
-                                    out.status.push('Sorry we were unable to add a new entry to the blog');
+                                    out.code = 0;
+                                    out.message = 'Sorry we were unable to add the new blog entry';
                                     res.send(JSON.stringify(out));
                                 }
                             });
                         }else{
-                            out.status.push('Sorry we were unable to add a new entry because the topic does not exist');
+                            out.code = 0;
+                            out.message = 'Sorry we were unable to add a new entry because the topic does not exist';
                             res.send(JSON.stringify(out));
                         }
                     });
                 }else{
-                    out.status.push('Sorry we were unable to add a new entry to the blog, the title already exists');
+                    out.code = 0;
+                    out.message= 'Sorry we were unable to add a new entry to the blog, the title already exists';
                     res.send(JSON.stringify(out));
                 }
             });

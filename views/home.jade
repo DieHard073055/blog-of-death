@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    div.container
+        style.
+            body { word-wrap:break-word;}
+        div(class="page-header text-center")
+            h1
+                span(class="fa fa-anchor")
+                d Profile Page
+                br
+                a(href="/logout" class="btn btn-default btn-sm") Logout
+
+        div.row
+            div.col-sm-7
+                div.well
+                    h4
+                        span(class="fa fa-user")  Local
+                        p
+                            
+                            if user.account.token
+                                p
+                                    img(src="//graph.facebook.com/#{user.account.id}/picture?type=square")
+                                    img(src="//graph.facebook.com/#{user.account.id}/picture?type=small")
+                                    img(src="//graph.facebook.com/#{user.account.id}/picture?type=normal")
+                                    img(src="//graph.facebook.com/#{user.account.id}/picture?type=large")
+                            <strong>id:</strong>  #{user.id}
+                            br
+                            <strong>name:</strong>  #{user.account.name}
+                            br
+                            <strong>email:</strong>  #{user.account.email}
+                            br 
+                            <strong>password:</strong>  #{user.account.password}
+                            br
+                            if user.account.token
+                                <strong>account type:</strong> #{user.account.token} 
+                                <strong>account type:</strong> facebook verified
+
+                                
+                            else
+
+                                <strong>account type:</strong> normal account
+

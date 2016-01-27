@@ -7,7 +7,7 @@ var objectID = require('./db_module').objectID;
 
 var add_comments = function(data, res){
     var out ={};
-    out['status'] = [];
+    
 
     if(data.arguments== 'add_comment'){
         if(data.comment_text && data.blog_id){
@@ -19,12 +19,19 @@ var add_comments = function(data, res){
                         var comment = {
                             text:data.comment_text, 
                             blog_id:data.blog_id, 
-                            author:'diehard', 
-                            date: new Date().toDateString()
+                            author:data.user.name, 
+                            user_id:data.user.id,
+                            date: new Date()
                         };
                         insert_comment(comment, function(result){
-                            if(result) out.status.push('Successfully added the comment to the db');         
-                            else out.status.push('Failed to add the comment to the db');
+                            if(result){ 
+                                out.code = 1;
+                                out.message ='Successfully added the comment to the db';         
+                            }
+                            else{ 
+                                out.code = 0;
+                                out.message='Failed to add the comment to the db';
+                            }
                             res.send(JSON.stringify(out));
                         });
                     }else{res.send(JSON.stringify(invalid_blog_id()));}
@@ -88,7 +95,8 @@ var insert_comment = function(comment, done){
 
 var get_instructions = function(){
     var instructions = {
-        'instructions' :
+        'code': 0,
+        'message' :
         'add_comments_module : to add a new comment to the comments collection, add the following data to the request body.  arguments :  add_comment, comment : "comment name"  '
     };
     return instructions;
@@ -100,13 +108,15 @@ var get_instructions = function(){
 
 var missing_comment_text = function(){
     return {
-        'error' : 'missing data - comment_text : <comment_text> , blog_id : <id of the blog the comment goes to>'
+        'code':0,
+        'message' : 'missing data - comment_text : <comment_text> , blog_id : <id of the blog the comment goes to>'
     };
 };
 
 var invalid_blog_id = function(){
     return {
-        'error' : 'the blog_id provided does not exist, please provide a legit blog_id'
+        'code' : 0,
+        'message' : 'the blog_id provided does not exist, please provide a legit blog_id'
     };
 };
 

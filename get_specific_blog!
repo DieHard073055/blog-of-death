@@ -1,0 +1,12 @@
+    var get_blog_data_and_fill = function(){
+        
+        post_data_blogs(
+            {
+                'module': 'blog', 
+                'id' : $('#edit-blog-id').val()
+            }, function(data){
+                console.log('data is here');
+                console.log(data);  
+            });
+
+    };

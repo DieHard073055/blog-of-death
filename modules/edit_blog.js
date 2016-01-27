@@ -7,7 +7,6 @@ var objectID = require('./db_module').objectID;
 
 var edit_blog = function(data, res){
     var out = {}
-    out.status = [];
 
     if(data.id){ 
         check_for_all_fields(data, function(fields){
@@ -17,11 +16,13 @@ var edit_blog = function(data, res){
                         prep_payload(data, function(payload){
                             update_blog_entry(data.id, payload, function(result){
                                 if(result){
-                                    out.status.push('Successfully updated the blog');      
+                                    out.code = 1;
+                                    out.message='Successfully updated the blog';      
 
                                     res.send(out);
                                 }else{
-                                    out.status.push('Sorry! we were unable to updated the blog');      
+                                    out.code = 0;
+                                    out.message = 'Sorry! we were unable to updated the blog';
                                     res.send(out);
                                 }
                             });
@@ -108,11 +109,11 @@ var title_exists = function(title, id, done){
                 if(err) throw err;
                 if(doc!=null){
                     console.log(doc);
-                    if(doc.title == title && doc.id != id){
+                    if(doc.title == title && doc._id == id){
                     
-                        if(!called){called=true;done(true)}
-                    }else{
                         if(!called){called=true;done(false)}
+                    }else{
+                        if(!called){called=true;done(true)}
                     }
                 }else{
                     if(!called){called=true;done(false)}
@@ -149,13 +150,15 @@ var update_blog_entry = function(id, blog_update_entry, done){
 
 var duplicate_title_error = function(){
     return {
-        'error' : 'Sorry, the provided title already exists! please provide a unique title!'
+        'code':0,
+        'message' : 'Sorry, the provided title already exists! please provide a unique title!'
     };
 };
 
 var get_instructions = function(){
     return {
-        'instructions' : 'In order to update a blog it is required to provide the following arguments :- module : edit_blog, id : "id of the blog to be edited", title : "old/new title", topic : "old/new topic", tags : "old/new tags", page_num:"number of pages being submited", page_x_subtitle : "subtitle of the page x : x starts with 0", page_x_body : "the body of the page x'
+        'code': 0,
+        'message' : 'In order to update a blog it is required to provide the following arguments :- module : edit_blog, id : "id of the blog to be edited", title : "old/new title", topic : "old/new topic", tags : "old/new tags", page_num:"number of pages being submited", page_x_subtitle : "subtitle of the page x : x starts with 0", page_x_body : "the body of the page x'
     };
 };
 

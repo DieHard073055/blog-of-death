@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    div.container
+        style.
+            body { word-wrap:break-word;}
+        div(class="page-header text-center")
+            h1
+                span(class="fa fa-anchor")
+                d Profile Page
+                br
+                a(href="/logout" class="btn btn-default btn-sm") Logout
+
+        div.row
+            if user.local.email
+                div.col-sm-7
+                    div.well
+                        h4
+                            span(class="fa fa-user")  Local
+                            p
+                                <strong>id:</strong>  #{user.id}
+                                br
+                                <strong>name:</strong>  #{user.local.name}
+                                br
+                                <strong>email:</strong>  #{user.local.email}
+                                br 
+                                <strong>password:</strong>  #{user.local.password}
+                                br 
+            if user.facebook.email
+                div.col-sm-7
+                    div.well
+                        h4(class="text-primary")
+                            span(class="fa fa-facebook")  Facebook
+                            p
+                                <strong>id:</strong>  #{user.facebook.id}
+                                br
+                                <strong>token:</strong>  #{user.facebook.token}
+                                br
+                                <strong>email:</strong>  #{user.facebook.email}
+                                br 
+                                <strong>name:</strong>  #{user.facebook.name}
+                                br

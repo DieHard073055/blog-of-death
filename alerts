@@ -1,0 +1,31 @@
+    var get_danger_alert = function(header, msg, redirect, redirect_msg){
+        if(!redirect)
+            var out = `
+            <div class="alert alert-danger alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> 
+            <h4>` + header + `</h4> <p>`+ msg + `</p>
+            </div>`;
+        else
+            var out = `
+            <div class="alert alert-danger alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> 
+            <h4>` + header + `</h4> <p>`+ msg + `
+            </p>
+            <p><a href="`+redirect+`" class="btn btn-success"> `+redirect_msg+` </a></p>
+            </div>`;
+        return out;
+    }
+    var get_success_alert = function(header, msg, redirect, redirect_msg){
+        if(!redirect)
+            var out = `
+            <div class="alert alert-success alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> 
+            <h4>` + header + `</h4> <p>`+ msg + `</p>
+            </div>`;
+        else
+            var out = `
+            <div class="alert alert-success alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> 
+            <h4>` + header + `</h4> <p>`+ msg + `
+            </p>
+            <p><a href="`+redirect+`" class="btn btn-success"> `+redirect_msg+` </a></p>
+            </div>`;
+        return out;
+    }
+    

@@ -9,7 +9,9 @@ var all_topics = function(data, res){
 
         //database operations
         fetch_all(function(topics){
+            console.log(JSON.stringify(topics));
             res.send(JSON.stringify(topics));
+            
         });
 
     }else{

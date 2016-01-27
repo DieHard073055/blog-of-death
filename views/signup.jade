@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    div.container
+        div(class="col-sm-6 col-sm-offset-3")
+            
+            h1
+                span(class="fa fa-user")  
+                b  Signup
+
+            if message.length > 0
+                div(class="alert alert-danger") #{message}
+
+            form(action="/signup" method="post") 
+                
+                
+                div.form-group
+                    label Name
+                    input(type="text" class="form-control" name="name")
+                
+                div.form-group
+                    label Email
+                    input(type="email" class="form-control" name="email")
+
+                div.form-group
+                    label Password
+                    input(type="password" class="form-control" name="password")
+
+                button(type="submit" class="btn btn-warning btn-lg") Signup 
+            hr
+            p Already have account? 
+                a(href="/login") 
+                    span(class="fa fa-sign-in") 
+                    Login
+            p Or go
+                a(href="/") 
+                    span(class="fa fa-home") 
+                    Home

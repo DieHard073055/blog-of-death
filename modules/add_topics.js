@@ -6,7 +6,6 @@ var connect_db = require('./db_module').connect_db_write;
 
 var add_topics = function(data, res){
     var out ={};
-    out['status'] = [];
 
     if(data.arguments== 'add_topic'){
         if(data.topic_name){
@@ -17,8 +16,15 @@ var add_topics = function(data, res){
                 if(!result){
                     var topic = {topic_name:data.topic_name, topic_parent:data.topic_parent};
                     insert_topic(topic, function(result){
-                        if(result) out.status.push('Successfully added the topic to the db');         
-                        else out.status.push('Failed to add the topic to the db');
+                        var result = 1;
+                        if(result){
+                            out.code = 1;
+                            out.message = "Topic entry was successfull";
+                        }
+                        else{
+                            out.code = 0;
+                            out.message = "database did not allow the topic entry";
+                        }
                         res.send(JSON.stringify(out));
                     });
                 }else{
@@ -82,7 +88,8 @@ var topic_exists = function(topic_name, done){
 
 var topic_already_exists = function(){
     return {
-        'error' : 'Sorry we were unable to add the topic to the database as its already there'
+        'code' : 0,
+        'message' : 'Sorry the topic already exists! Please Submit a different one'
     };
 };
 

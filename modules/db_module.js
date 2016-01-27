@@ -1,9 +1,9 @@
 var mongodb = require('mongodb');
 var monClient = mongodb.MongoClient;
 var objectID = mongodb.ObjectID;
-var dbConfig = require('../config/dbconfig');
-var writer = dbConfig.writter;
-var reader = dbConfig.reader;
+var dbConfig = require('../config/database');
+var writer = dbConfig.write_url;
+var reader = dbConfig.read_url;
 
 var connect_database_write = function(callback){
     monClient.connect(writer, function(err, db){

@@ -1,0 +1,5 @@
+db.createUser({user:"blog_writer",pwd:"1hAt3WrItTIngBl0g5",roles:[{role:"readWrite",db:"blog-of-death"}]})
+
+db.createUser({user:"blog_reader",pwd:"1L0v3t0r3AdBl0g5",roles:[{role:"read",db:"blog-of-death"}]})
+
+db.createUser({user:"diehard",pwd:"paradise",roles:[{role:"userAdmin",db:"blog-of-death"}]})

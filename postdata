@@ -1,0 +1,3 @@
+    var post_data_blogs = function(payload, callback){
+        $.post('/blogs', payload, function(data){callback(data);}, 'json');
+    };

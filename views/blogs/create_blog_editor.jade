@@ -1,0 +1,223 @@
+//EDITOR START
+div(class="ewrapper#{i}" contentEditable="false")
+    //-############################
+    //- Tool Bar begin
+    //-############################
+
+    div(class="toolbar")
+        div(class="block")
+            a(data-wysihtml5-command="bold" title="CTRL+B" class="btn btn-default btn-xs") 
+                span(class="fa fa-bold")
+            a(data-wysihtml5-command="italic" title="CTRL+I" class="btn btn-default btn-xs") 
+                span(class="fa fa-italic")
+            a(data-wysihtml5-command="underline" title="CTRL+U" class="btn btn-default btn-xs") 
+                span(class="fa fa-underline")
+            a(data-wysihtml5-command="superscript" title="sup" class="btn btn-default btn-xs") 
+                span(class="fa fa-superscript")
+            a(data-wysihtml5-command="subscript" title="sub" class="btn btn-default btn-xs") 
+                span(class="fa fa-subscript")
+                
+            a(data-wysihtml5-command="fontSizeStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-text-height") Size
+            
+            div(data-wysihtml5-dialog="fontSizeStyle" style="display: none;") Size : 
+                div.size
+                    script(type="text/javascript" charset="utf-8").
+                        var setSize#{i} = function(size){
+                            document.getElementById("size-display-#{i}").value = size + 'px';
+                        };
+                    input(type="range" min="0" max="100" step="1" oninput="setSize#{i}(this.value)" onchange="setSize#{i}(this.value)" style="width: 100px;")
+                    input(id="size-display-#{i}" type="text" data-wysihtml5-dialog-field="size" style="width: 60px;" value="")
+                    
+                a(data-wysihtml5-dialog-action="save" class="btn btn-default btn-xs") OK
+                a(data-wysihtml5-dialog-action="cancel" class="btn btn-default btn-xs") Cancel
+
+        
+            a(data-wysihtml5-command="createLink" class="btn btn-default btn-xs") 
+                span(class="fa fa-link") link
+            a(data-wysihtml5-command="removeLink" class="btn btn-default btn-xs") 
+                span(class="fa fa-unlink") remove link
+            a(data-wysihtml5-command="insertImage" class="btn btn-default btn-xs") 
+                span(class="fa fa-image") image
+        
+        
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" class="btn btn-default btn-xs") 
+                span(class="fa fa-header") 1
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" class="btn btn-default btn-xs") 
+                span(class="fa fa-header") 2
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3" class="btn btn-default btn-xs") 
+                span(class="fa fa-header") 3
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" class="btn btn-default btn-xs") 
+                span(class="fa fa-paragraph") p
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="pre" class="btn btn-default btn-xs") 
+                span(class="fa fa-list") pre
+        
+        
+            a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-blank-value="true" class="btn btn-default btn-xs") 
+                span(class="fa fa-file-text-o") plain
+
+            a(data-wysihtml5-command="insertBlockQuote" class="btn btn-default btn-xs") 
+                span(class="fa fa-quote-left") blockquote
+            a(data-wysihtml5-command="formatCode" data-wysihtml5-command-value="language-html" class="btn btn-default btn-xs") 
+                span(class="fa fa-code") code
+
+
+        div(class="block")
+            a(data-wysihtml5-command="insertUnorderedList" class="btn btn-default btn-xs") 
+                span(class="fa fa-list-ul") U List
+            a(data-wysihtml5-command="insertOrderedList" class="btn btn-default btn-xs") 
+                span(class="fa fa-list-ol") List
+
+        
+            a(data-wysihtml5-command="outdentList" class="btn btn-default btn-xs") 
+                span(class="fa fa-arrow-left")
+            a(data-wysihtml5-command="indentList" class="btn btn-default btn-xs") 
+                span(class="fa fa-arrow-right")
+
+        
+            a(data-wysihtml5-command="justifyLeft")
+            a(data-wysihtml5-command="justifyRight")
+            a(data-wysihtml5-command="justifyFull")
+
+    
+        
+            a(data-wysihtml5-command="alignLeftStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-align-left")
+            a(data-wysihtml5-command="alignCenterStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-align-center")
+            a(data-wysihtml5-command="alignRightStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-align-right")
+            
+            //Fore Colors 
+        
+            a(data-wysihtml5-command="foreColorStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-eyedropper") Color
+            div(data-wysihtml5-dialog="foreColorStyle" style="display: none;") Color :
+                
+                //Color Picker START
+                
+                div.color
+                    script(type="text/javascript" src="/farbtastic/farbtastic.js")
+                    link(rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css")
+                    script( type="text/javascript" charset="utf-8").
+                        var hexToRgb = function(hex){
+                            var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                            hex = hex.replace(shorthandRegex, function(m,r,g,b){
+                                return r + r + g + g + b + b;
+                            });
+
+                            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                            return result ? {
+                                r : parseInt(result[1], 16),
+                                g : parseInt(result[2], 16),
+                                b : parseInt(result[3], 16)
+                            } : null;
+                        };
+                        
+                        var get_color = function(rgb){
+                            return 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
+                        };
+
+                        $(document).ready(function() {
+                    
+                            $('#picker#{i}').farbtastic(function(color){
+                                $('#color').val(get_color(hexToRgb(color)));   
+                            });
+                        });
+
+                    input(type="text" data-wysihtml5-dialog-field="color" value="rgba(0,0,0,1)" id="color")
+                    div(id="picker#{i}")
+                    
+                    //Color Picker END
+                    
+                    a(data-wysihtml5-dialog-action="save" class="btn btn-default") OK
+                    a(data-wysihtml5-dialog-action="cancel" class="btn btn-default") Cancel
+            
+            //background Colors
+       
+            a(data-wysihtml5-command="bgColorStyle" class="btn btn-default btn-xs") 
+                span(class="fa fa-picture-o") BG Color
+            div(data-wysihtml5-dialog="bgColorStyle" style="display: none;") Color:
+                //Color Picker START
+                
+                div.color
+                    script(type="text/javascript" src="/farbtastic/farbtastic.js")
+                    link(rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css")
+                    script( type="text/javascript" charset="utf-8").
+                        var hexToRgb = function(hex){
+                            var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                            hex = hex.replace(shorthandRegex, function(m,r,g,b){
+                                return r + r + g + g + b + b;
+                            });
+
+                            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                            return result ? {
+                                r : parseInt(result[1], 16),
+                                g : parseInt(result[2], 16),
+                                b : parseInt(result[3], 16)
+                            } : null;
+                        };
+                        
+                        var get_color = function(rgb){
+                            return 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
+                        };
+
+                        $(document).ready(function() {
+                            $('#bgpicker#{i}').farbtastic(function(color){
+                                $('#bgcolor').val(get_color(hexToRgb(color)));   
+                            });
+                        });
+
+                    input(type="text" data-wysihtml5-dialog-field="color" value="rgba(0,0,0,1)" id="bgcolor")
+                    div(id="bgpicker#{i}")
+                    
+                    //Color Picker END
+                a(data-wysihtml5-dialog-action="save" class="btn btn-default btn-xs") OK
+                a(data-wysihtml5-dialog-action="cancel" class="btn btn-default btn-xs") Cancel
+
+        
+            a(data-wysihtml5-command="undo" class="btn btn-default btn-xs") 
+                span(class="fa fa-undo") Undo
+            a(data-wysihtml5-command="redo" class="btn btn-default btn-xs") 
+                span(class="fa fa-level-up") Redo
+                
+                
+            a(data-wysihtml5-action="change_view" class="btn btn-default btn-xs") 
+                span(class="fa fa-terminal" ) HTML
+
+        div(data-wysihtml5-dialog="createLink" style="display: none;")
+            label="Link"
+                input(data-wysihtml5-dialog-field="href" value="http://")
+            
+            a(data-wysihtml5-dialog-action="save" class="btn btn-default btn-xs") OK
+            a(data-wysihtml5-dialog-action="cancel" class="btn btn-default btn-xs") Cancel
+
+        div(div data-wysihtml5-dialog="insertImage" style="display: none;")
+            label= "Image:"
+                input(data-wysihtml5-dialog-field="src" value="http://")
+
+            label= "Align:"
+                select(data-wysihtml5-dialog-field="className")
+                    option(value="") default
+                    option(value="wysiwyg-float-left") Left
+                    option(value="wysiwyg-float-right") Right
+            
+            a(data-wysihtml5-dialog-action="save" class="btn btn-default btn-xs") OK
+            a(data-wysihtml5-dialog-action="cancel" class="btn btn-default btn-xs") Cancel
+    
+    //-################
+    //- Tool Bar End
+    //-################
+    
+    br
+    label(for="Body") Blog Body
+    br
+    div(
+        class="editable#{i}" 
+        data-placeholder="Enter text"
+        name="page_#{i}_body"
+        id="page_#{i}_body"
+        style="outline: 1px solid #abc;"
+    )
+
+//EDITOR END
