@@ -114,8 +114,8 @@
                     var dd = document.createElement('div');
                     var ddd = document.createElement('div');
                     $(ddd).addClass('container');
-                    $(dd).addClass('container');
-                    $(dd).addClass('well well-sm');
+                    $(dd).addClass('post');
+//                    $(dd).addClass('well well-sm');
                     $(d).append($(title));
                     $(d).append($(author));
                     $(d).append($(topic));
@@ -124,15 +124,15 @@
                     $(d).append($(edit_blog));
                     $(d).append($(delete_blog));
                     //making the divs, user interactive
-                    $(d).hover(function(){
-                        //Mouse Enter
-                        //$(this).removeClass('');
-                        $(this).addClass('active');
-                    }, function(){
-                        //Mouse Leave
-                        //$(this).removeClass('active');
-                        $(this).addClass('');
-                    });
+//                    $(d).hover(function(){
+//                        //Mouse Enter
+//                        //$(this).removeClass('');
+//                        $(this).addClass('active');
+//                    }, function(){
+//                        //Mouse Leave
+//                        //$(this).removeClass('active');
+//                        $(this).addClass('');
+//                    });
 
                     $(dd).append($(d));
                     $(ddd).append($(dd));

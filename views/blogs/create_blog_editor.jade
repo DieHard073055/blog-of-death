@@ -54,19 +54,19 @@ div(class="ewrapper#{i}" contentEditable="false")
         
         
             a(data-wysihtml5-command="formatBlock" data-wysihtml5-command-blank-value="true" class="btn btn-default btn-xs") 
-                span(class="fa fa-file-text-o") plain
+                span(class="fa fa-file-text-o")  plain
 
             a(data-wysihtml5-command="insertBlockQuote" class="btn btn-default btn-xs") 
-                span(class="fa fa-quote-left") blockquote
+                span(class="fa fa-quote-left")  quote
             a(data-wysihtml5-command="formatCode" data-wysihtml5-command-value="language-html" class="btn btn-default btn-xs") 
-                span(class="fa fa-code") code
+                span(class="fa fa-code")  code
 
 
         div(class="block")
             a(data-wysihtml5-command="insertUnorderedList" class="btn btn-default btn-xs") 
-                span(class="fa fa-list-ul") U List
+                span(class="fa fa-list-ul")
             a(data-wysihtml5-command="insertOrderedList" class="btn btn-default btn-xs") 
-                span(class="fa fa-list-ol") List
+                span(class="fa fa-list-ol")
 
         
             a(data-wysihtml5-command="outdentList" class="btn btn-default btn-xs") 
@@ -210,14 +210,14 @@ div(class="ewrapper#{i}" contentEditable="false")
     //-################
     
     br
-    label(for="Body") Blog Body
+    label(for="Body") Body
     br
-    div(
+    textarea(
         class="editable#{i}" 
-        data-placeholder="Enter text"
         name="page_#{i}_body"
         id="page_#{i}_body"
-        style="outline: 1px solid #abc;"
+        placeholder=""
+        row="10"
     )
 
 //EDITOR END

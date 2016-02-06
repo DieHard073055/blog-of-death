@@ -2,21 +2,21 @@ extends layout
 
 block content
     div.container
-        div(class="jumbotron text-center")
+        div(class="unauthorized text-center")
             h1
                 span(class="fa fa-lock") 
                  Node Authentication
 
-            p Login or Register with:
+            p Enter with:
 
-            a(href="/login" class="btn btn-default")
+            a(href="/login" class="btn ")
                 span(class="fa fa-user") 
                  Local Login
 
-            a(href="/signup" class="btn btn-default")
+            a(href="/signup" class="btn")
                 span(class="fa fa-user") 
                  Local Signup
             
-            a(href="/auth/facebook" class="btn btn-primary")
+            a(href="/auth/facebook" class="btn")
                 span(class="fa fa-facebook")
                 n  Facebook

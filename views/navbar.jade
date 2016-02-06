@@ -1,4 +1,4 @@
-nav(class="navbar navbar-inverse navbar-static-top")
+nav(class="navbar navbar-static-top navbar-rethemed")
     div.container
         div.navbar-header
             button(
@@ -13,53 +13,48 @@ nav(class="navbar navbar-inverse navbar-static-top")
                 span(class="icon-bar")
                 span(class="icon-bar")
                 span(class="icon-bar")
-               
-            a(href="/" class="navbar-brand") Blog-Of-Death
+
+            a(href="/" class="navbar-brand") Blog Of Death
 
         div(class="navbar-collapse collapse" id="navbar")
             ul(class="nav navbar-nav")
-                
+
                 li
-                    a(href="/blogs") 
-                        span(class="fa fa-book")  Blogs
+                    a(href="/blogs") Blogs
                 li
-                    a(href="/topics") 
-                        span(class="fa fa-columns")  Topics
+                    a(href="/topics") Topics
                 if !user
                      li
-                        a(href="/login") 
-                            span(class="fa fa-user-secret")  Admin Login
-               
-                
+                        a(href="/login") Admin Login
+
+
                 if user
                     if !user.account.token
-                    
+
                         li
-                            a(href="/blogs/create_blog") 
-                                span(class="fa fa-plus-square")  Create Blog
+                            a(href="/blogs/create_blog" class="blogmenu createblog") + Create Blog
                         li
-                            a(href="/blogs/edit_blog") 
-                                span(class="fa fa-pencil-square")  Edit Blog
+                            a(href="/blogs/edit_blog" class="blogmenu editblog") > Edit Blog
 
                   //li
                   //  form(class="navbar-form" role="search")
                   //      div.form-group
                   //          input(type="text" class="form-control" placeholder="Search Tags")
                   //      button(type="button" id="search-tag" class="btn btn-primary") Search
-                
-        
-            p(class="navbar-text navbar-right")
+
+
+            p(class="navbar-right logout")
                 if user
-                    a(href="/logout" class="btn btn-default") 
-                        span(class="fa fa-power-off")  logout                 
+                    a(href="/logout" class="btn btn-default") Logout                 
                 else 
-                    a(href="/auth/facebook" class="btn btn-primary")
-                        span(class="fa fa-facebook-official")   login 
-                      
+                    a(href="/auth/facebook" class="btn btn-fb")
+                        span(class="fa fa-facebook-official") User Login 
+
                 if user
-                    p(class="navbar-text navbar-right")
+                    p(class="navbar-right user-as")
                         if user.account.token
                             img(src="//graph.facebook.com/#{user.account.id}/picture?type=square")
-                        p(class="navbar-text") Signed in as #{user.account.name}
-                               
-            
+                        p(class="navbar-text signin-as") Signed in as 
+                            span(class="user") #{user.account.name}
+
+

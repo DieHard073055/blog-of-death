@@ -34,7 +34,7 @@ module.exports = function(app, passport){
     
     router.get('/', function(req, res, next){
         data ={};
-        data.title = 'blog-of-death';
+        data.title = 'Topics';
         data.user = req.user;
         res.render('topics/all_topics', data);
     });

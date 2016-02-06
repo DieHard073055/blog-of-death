@@ -70,8 +70,8 @@
                 console.log(p.topic_name);
                 var t = htify('a', p.topic_name, 'class="label label-primary" href="/blogs/blog_topic/'+p.topic_name+'"');
                 t = htify('h3', t);
-                topics_out +='<br>'+ htify('p',t);
-                topics_out = htify('div', topics_out, 'class="well"');
+                topics_out += htify('p',t);
+                topics_out = htify('div', topics_out, 'class="post"');
                 ul += topics_out;
                 topics_out = '';
                 data.splice(p_i, 1);

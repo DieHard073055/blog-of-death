@@ -59,7 +59,7 @@ module.exports = function(app, passport){
 
     router.get('/', function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Blogs';
         data.user = req.user;
         res.render('blogs/blogs', data);    
     });
@@ -72,32 +72,32 @@ module.exports = function(app, passport){
     });
     router.get('/create_blog',isAllowedHere, function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Create A Blog';
         data.user = req.user;
         res.render('blogs/create_blog', data);
     });
     router.get('/edit_blog',isAllowedHere, function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Edit Blog';
         data.user = req.user;
         res.render('blogs/edit_blog', data);
     });
     router.get('/edit_blog/:id',isAllowedHere, function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Edit Blog';
         data.user = req.user;
         data.id = req.params.id;
         res.render('blogs/edit_blog_page', data);
     });
     router.get('/blog_topic', function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Blog Topics';
         data.user = req.user;
         res.redirect('/blogs', data);
     });
     router.get('/blog_topic/:topic_name', function(req, res, next){
         data = {};
-        data.title = 'blog-of-death';
+        data.title = 'Blog Topics';
         data.user = req.user;
         if(req.params.topic_name){
             data.topic = req.params.topic_name;

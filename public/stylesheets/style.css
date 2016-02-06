@@ -1,8 +1,186 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Raleway';
+    background-color: #0a0a0a;
+    color: #fff;
+    letter-spacing: 1px;
 }
 
-a {
-  color: #00B7FF;
+.navbar ul li a,
+a{
+    color: #4f4f4f;
+    transition: color .3s ease;
+}
+
+.navbar ul li a:hover,
+.btn:hover,
+a:hover{
+    color: #fff;
+}
+.btn{
+    border-radius: 0;
+    border: none;
+}
+/*
+    Signup
+-------------*/
+.login h1,
+.signup h1{
+    font-weight: lighter;
+}
+.btn-warning{
+    background-image: none;
+    background-color: #eb9316;
+}
+.btn-warning:hover{
+    background-color: #eb5e16;
+}
+/*
+    Logged out
+-------------*/
+.unauthorized h1 node,
+.navbar-brand{
+    font-family: 'Dosis';
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.unauthorized h1{
+    margin: 100px 0;
+}
+
+/*
+    NAVBAR
+---------------*/
+nav{
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    text-shadow: transparent;
+}
+.navbar-rethemed a{
+    color:#fff;
+}
+.navbar-rethemed .navbar-nav li a:hover{
+    background-color: none;
+}
+.navbar ul li a{
+    font-weight: lighter;
+}
+.navbar ul li a:hover{
+    background: transparent;
+}
+.signin-as{
+    letter-spacing: 0;
+    text-transform: lowercase;
+}
+.user{
+    color:cadetblue;
+}
+.blogmenu{
+    border-bottom: 1px solid;
+}
+.createblog{
+    border-bottom-color: cadetblue;
+}
+.editblog{
+    border-bottom-color: white;
+}
+/*
+    Btn
+-------------*/
+.btn-default,
+.btn-default:hover{
+    text-shadow: none;
+    border-radius: 0;
+}
+.btn-default{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: border-bottom .5s ease;
+}
+.btn-default:hover,
+.post .label-primary:hover{
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #fff;
+}
+/*
+    Blog Post
+-----------*/
+.blog-post{
+    cursor: pointer;
+}
+.post{
+    border-left: 30px solid gray;
+    padding: 10px;
+    transition: background-color .6s ease;
+}
+.post:hover{
+    background-color: dimgray;
+}
+
+.post h3{
+    margin-top: 10px;   
+}
+/*
+    Profile Details
+---------------------*/
+.profile-details .well{
+    background: transparent;
+}
+
+/*
+    Editor Toolbar
+-------------------*/
+textarea{
+    resize: both;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
+}
+.toolbar{
+    padding: 15px;
+    border-radius: 3px;
+}
+.toolbar .btn-default{
+    padding: 4px;
+}
+.toolbar .btn-default:hover{
+    color: white;
+    background-color: gray;
+    border-radius: 3px;
+}
+.bodytext,
+.form-group input,
+select{
+    background-color: transparent !important;
+    border-radius: 10px;
+    padding:3px;
+    color: #fff;
+}
+
+.toolbar .btn-primary {
+    background: transparent;
+}
+a#add_page:hover{
+    background: transparent;
+}
+/*
+    Topics
+-----------*/
+.post .label-primary:hover,
+.post .label-primary{
+    background: transparent;
+}
+.post .label-primary{
+    border: 1px solid transparent;
+}
+.post .label{
+    border-radius: 0;
 }

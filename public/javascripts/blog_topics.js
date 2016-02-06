@@ -36,23 +36,23 @@
                     var dd = document.createElement('div');
                     var ddd = document.createElement('div');
                     $(ddd).addClass('container');
-                    $(dd).addClass('container');
-                    $(dd).addClass('well well-lg');
+                    $(dd).addClass('post');
+//                    $(dd).addClass('well well-lg');
                     $(d).append($(title));
                     $(d).append($(author));
                     $(d).append($(topic));
                     $(d).append($(tags));
                     $(d).attr('data-href', '/blogs/show_blog/' + e._id);
                     //making the divs, user interactive
-                    $(dd).hover(function(){
-                        //Mouse Enter
-                        $(this).removeClass('well well-lg');
-                        $(this).addClass('panel panel-default');
-                    }, function(){
-                        //Mouse Leave
-                        $(this).removeClass('panel panel-default');
-                        $(this).addClass('well well-lg');
-                    });
+//                    $(dd).hover(function(){
+//                        //Mouse Enter
+//                        $(this).removeClass('well well-lg');
+//                        $(this).addClass('panel panel-default');
+//                    }, function(){
+//                        //Mouse Leave
+//                        $(this).removeClass('panel panel-default');
+//                        $(this).addClass('well well-lg');
+//                    });
                     $(d).click(function(){
                         window.location = $(this).attr('data-href');
                         return false;

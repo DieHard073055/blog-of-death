@@ -5,7 +5,6 @@ var users = [
 
 
 module.exports = {
-    'read_url' : 'mongodb://'+ users[0].username + ':' + users[0].pwd + '@localhost:27017/blog-of-death',
-    'write_url' : 'mongodb://'+ users[1].username + ':' + users[1].pwd + '@localhost:27017/blog-of-death'
-
+	'read_url':'mongodb://localhost:27017/blog-of-death',
+	'write_url':'mongodb://localhost:27017/blog-of-death'
 };

@@ -5,9 +5,10 @@ block content
     script(src="/javascripts/wysihtml/parser_rules/advanced_and_extended.js")
     script(src="/javascripts/get_editor.js")
     script(src="/javascripts/create_blog.js")
-    div.container-fluid
+    div.container
         h1= title
         
+        //popup
         div(id="alert_messages")
         include create_blog_form.jade
         

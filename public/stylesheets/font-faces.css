@@ -1,0 +1,28 @@
+@font-face{
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Regular.ttf') format('truetype');  /*    Safari, Android. iOS  */
+}
+@font-face{
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Bold.ttf') format('truetype');  /*    Safari, Android. iOS  */
+    font-weight: bold;
+}
+@font-face{
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Light.ttf') format('truetype');  /*    Safari, Android. iOS  */
+    font-weight: lighter;
+}
+@font-face{
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis/Dosis-Regular.ttf') format('truetype');  /*    Safari, Android. iOS  */
+}
+@font-face{
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis/Dosis-Bold.ttf') format('truetype');  /*    Safari, Android. iOS  */
+    font-weight: bold;
+}
+@font-face{
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis/Dosis-Light.ttf') format('truetype');  /*    Safari, Android. iOS  */
+    font-weight: lighter;
+}
