@@ -15,11 +15,14 @@ a{
 .navbar ul li a:hover,
 .btn:hover,
 a:hover{
-    color: #fff;
+    color: lightgray;
 }
 .btn{
     border-radius: 0;
     border: none;
+}
+.container h1{
+    margin-bottom: 10px;
 }
 /*
     Signup
@@ -115,7 +118,7 @@ nav{
     cursor: pointer;
 }
 .post{
-    border-left: 30px solid gray;
+    border-left: 10px solid gray;
     padding: 10px;
     transition: background-color .6s ease;
 }
@@ -146,7 +149,6 @@ textarea{
 }
 .toolbar{
     padding: 15px;
-    border-radius: 3px;
 }
 .toolbar .btn-default{
     padding: 4px;
@@ -154,23 +156,42 @@ textarea{
 .toolbar .btn-default:hover{
     color: white;
     background-color: gray;
+}
+.toolbar .btn-primary {
+    background: transparent;
+}
+/*
+    Btn Border Radius
+----------------------*/
+.toolbar,
+.toolbar .btn-default{
     border-radius: 3px;
 }
+/*
+    Forms
+-----------*/
 .bodytext,
 .form-group input,
 select{
     background-color: transparent !important;
-    border-radius: 10px;
+    border-radius: 5px;
     padding:3px;
     color: #fff;
 }
-
-.toolbar .btn-primary {
-    background: transparent;
+#add_page{
+    margin-bottom: 10px;
+}
+a#add_page .btn-primary,
+a#add_page:hover{
+    background-image: none;
+}
+a#add_page .btn-primary{
+    background-color: cadetblue;
 }
 a#add_page:hover{
-    background: transparent;
+    background-color: dodgerblue;
 }
+
 /*
     Topics
 -----------*/
@@ -183,4 +204,12 @@ a#add_page:hover{
 }
 .post .label{
     border-radius: 0;
+}
+
+/*
+    Popup New Topic
+-------------------*/
+.new-topic h4,
+.new-topic p{
+    color: #0a0a0a;
 }

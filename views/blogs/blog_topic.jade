@@ -2,9 +2,9 @@ extends ../layout
 
 block content
     div.container
-    h1= title
+        h1= title
         
-        input(type="hidden" id="topic" value="#{topic}")
-        div(id="blogs-list")
+            input(type="hidden" id="topic" value="#{topic}")
+            div(id="blogs-list")
 
     script(src="/javascripts/blog_topics.js")
