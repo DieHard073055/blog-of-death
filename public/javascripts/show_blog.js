@@ -202,12 +202,11 @@
             $(body).html(pages[i].body);
             $(date).html(pages[i].date_modified);
 
-            $(div).append($(stitle));
-            $(div).append($(line));
-            $(div).append($(body));
-            $(div).append($(line));
-            $(div).append($(space));
             $(div).append($(date));
+            $(div).append($(stitle));
+            $(div).append($(body));
+            $(div).append($(space));
+//            $(div).append($(line));
 
             $(pages_div).append($(div));
         }

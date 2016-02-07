@@ -5,19 +5,23 @@ block content
         div.col-md-6
             if user
                 input(type="hidden" id="user-name" value="#{user.account.name}")
-
                 input(type="hidden" id="user-id" value="#{user.account.id}")
+                
             input(type="hidden" id="blog-id" value="#{id}")
-            div(id="alerts")
-            div(id="blog_data")
-                h1(id="title") Loading blog data ..
-                h5(id="author") Please wait ..
-                h5(id="tags")
-                h5(id="topic")
-                h5(id="date")
-                div(id="pages")
-
-            div(class="" id="comments-comment" style="padding-top:50px;")                
-            div(class="" id="comments" style="padding-top:50px;")                
+        div(id="alerts")
+        div(id="blog_data")
+            h1(id="title" class="title") Loading blog data ..
+            h5(id="author" class="author") Please wait ..
+            h5(id="topic" class="topic")
+            h5(id="date" class="date")
+            em
+                h5(id="tags" class="tags")
+            div(id="pages" class="pages")
+        
+        hr
+        em
+            p(class="fbcomment") comments
+        div(class="" id="comments-comment" )                
+        div(class="" id="comments")                
 
     script(src="/javascripts/show_blog.js")

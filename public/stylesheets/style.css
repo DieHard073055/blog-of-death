@@ -50,7 +50,11 @@ a:hover{
 .unauthorized h1{
     margin: 100px 0;
 }
-
+.logout .btn-default:active{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+}
 /*
     NAVBAR
 ---------------*/
@@ -118,6 +122,7 @@ nav{
     cursor: pointer;
 }
 .post{
+    margin-bottom: 5px;
     border-left: 10px solid gray;
     padding: 10px;
     transition: background-color .6s ease;
@@ -125,9 +130,14 @@ nav{
 .post:hover{
     background-color: dimgray;
 }
-
 .post h3{
     margin-top: 10px;   
+}
+ul#page-content-nav li a[data-toggle]{
+    background-color: #202020;
+}
+ul#page-content-nav li:active a[data-toggle]{
+    background-color: gray;
 }
 /*
     Profile Details
@@ -168,7 +178,7 @@ textarea{
     border-radius: 3px;
 }
 /*
-    Forms
+    Input Forms
 -----------*/
 .bodytext,
 .form-group input,
@@ -179,17 +189,18 @@ select{
     color: #fff;
 }
 #add_page{
+    background: transparent;
+    background-color: cadetblue;
+    padding-left: 17px;
+    padding-top: 12px;
     margin-bottom: 10px;
+}
+#add_page:hover{
+    background-color: cadetblue;
 }
 a#add_page .btn-primary,
 a#add_page:hover{
     background-image: none;
-}
-a#add_page .btn-primary{
-    background-color: cadetblue;
-}
-a#add_page:hover{
-    background-color: dodgerblue;
 }
 
 /*
@@ -212,4 +223,51 @@ a#add_page:hover{
 .new-topic h4,
 .new-topic p{
     color: #0a0a0a;
+}
+
+/*Read Blog
+-----------*/
+#blog_data .author:before{
+    content: "written by "
+}
+#blog_data .tags{
+    text-align: right;
+}
+#blog_data .topic:before{
+    content: "Topic:    "
+}
+#blog_data .title{
+    font-family: 'Dosis';
+}
+#blog_data p {
+    
+}
+/*
+    Direct Changes
+------*/
+.well{
+    background: transparent;
+    border: none;
+}
+#blog-submit{
+    background: transparent;
+    background-color: seagreen;
+}
+.container{
+    margin-bottom: 20px;
+}
+
+#comments-comment .panel.panel-primary.form-group{
+    background: transparent;
+}
+#comments-comment .panel.panel-primary.form-group textarea{
+    resize: both;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 70%;
+}
+#comments-comment .panel.panel-primary.form-group img{
+    margin-right: 10px;
 }
