@@ -1,2 +1,2 @@
-DEBUG=blog-of-death:* npm start
+DEBUG=blog-of-death npm start
 

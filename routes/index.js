@@ -32,7 +32,7 @@ module.exports = function(app, passport){
     // ==========================
     // SIGNUP PAGE
     // ============
-
+/*
     router.get('/signup', loggedInRouteHome, function(req, res){
         var data={title:'blog-of-death'};
         data.message = req.flash('signupMessage');
@@ -45,7 +45,7 @@ module.exports = function(app, passport){
         failureFlash : true
     }));
         
-    
+*/    
 
     // ==========================
     // home SELECTION
